@@ -33,7 +33,7 @@ int main(int argc,char *argv[])
                 father1(i);
             }
 
-        for(i=1;i<=n;i++){
+        for(i=1;i<n;i++){
             if(strcmp(arr[i],argv[1])==0){l=i;flag++;}
             if(strcmp(arr[i],argv[2])==0){r=i;flag++;}
             if(flag==2)break;
