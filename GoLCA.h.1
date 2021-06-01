@@ -1,0 +1,123 @@
+.TH "GoLCA.h" "1" "Jun.2021"
+.SH NAME
+.TP
+GoLCA.h - Find Lowest Common Ancestor for Given Go Terms 
+.SH "SYNOPSIS"
+.TP
+.B "#include ""GoLCA.h""
+.SH DESCRIPTION
+.TP
+.B "GoLCA.h"
+Measuring the semantic similarity between Gene Ontology (GO) terms is an essential step in functional bioinformatics research. However, finding lowest common ancestor first is needed in many algorithms of measuring the semantic similarity between GO terms, such as Resnik and his team's algotirhm based on Information Contents, Wu and Palmer's algotirhm based on Hierarchical Structure and etc. Therefore, how to finding lowest common ancestor between given GO terms better is worth reconsidering, which may also helps to improve the efficiency of calculating the semantic similarity.
+.RS
+This package is used to find the lowest common ancestor between given Gene Ontology (GO) terms. While the biggest trouble is that the structure of GO terms is definitely not a tree, which means a child node may has more than one parent nodes, resulting in one node with more than one depth. In order to contain more gene information in the file and turn its stucture into a tree, this package set every GO term's deepest depth as its real depth. This package use the multiplication algorithm for reference and adopt a method called linked-forward-star to save plot in order to extract useful information from the file downloaded from database http://geneontology.org/ and turn GO terms' ID and their relationships into a plot. To present the relationships between GO terms vividly, this package also achieves visualization of the data set.
+.RE
+.RS
+After typing two GO IDs in the command line, \fB"GoLCA.h"\fR will print the LCA between these two GO terms.
+.RE
+.TP
+.B <usage>
+<filename> GO_id1 GO_id2
+.TP
+.B <example>
+bin/GoJumpLca 0008150 0000003
+.TP
+Type the commands below in order when first use this package
+.RS
+mkdir bin shared lib
+.RE
+.RS
+cd src
+.RE
+.RS
+export C_INCLUDE_PATH=../include:${C_INCLUDE_PATH}
+.RE
+.RS
+make
+.RE
+.RS
+make move
+.RE
+.RS
+cd ../
+.RE
+.RS
+export LD_LIBRARY_PATH=./lib:${LD_LIBRARY_PATH}
+.RE
+.RS
+<usage>
+.RE
+.TP
+The following shall be declared as functions.
+.TP
+.B void
+.B save_plot();
+.TP
+.B void
+.B init();
+.TP
+.B void
+.B dfs(int u,int d);
+.TP
+.B int
+.B LCA(int u,int v);
+.TP
+.B void
+.B father0(int u);
+.TP
+.B void
+.B father1(int u);
+.TP
+The following shall be declared as extern parameters.
+.TP
+.B extern int n;
+.TP
+.B extern char *arr[N];
+.TP
+.B extern int fa[N][M];
+.TP
+.B extern int dep[N];
+.TP
+.B extern int head[N];
+.TP
+.B extern int nx[N];
+.TP
+.B extern int to[N];
+.TP
+.B extern int tot;
+.TP
+.B extern int in[N];
+.SH APPLICATION USAGE
+.TP
+This package is used to find the lowest common ancestor (LCA) between given Gene Ontology (GO) terms. 
+.SH RATIONALE
+.TP
+None.
+.SH FUTURE DIRECTIONS
+.TP
+Although this package enables to finding LCA between GO terms effectively and innovatively solves some problems existed, there are some simplification on data processing and limitation on application.
+.TP
+First, it simplifies the relationships between GO terms. There are in fact three kinds of relationships : \flis_a\fR, \flpart_of\fR, \flregulates\fR provided in data file. However, the \flpart_of\fR and \flregulates\fR relations are a bit ambiguous, and their introduction will dramatically  increase the complexity and difficulty of the algorithm. Besides, the relationship it emphasizes is strict parent and child relation, that is \flis_a\fR , so it only extracts \flis_a\fR id as its parent node as simplification.
+.TP
+second, data size is limited. In this package, it sets N=300 (max number of GO terms). So before executing the package, it's better to make sure N is suitable for the data file and change its number if needed. 
+.TP
+The problems mentioned above need to solved to further improve the algorithm. It is anticipated that \fB"GoLCA.h"\fR will be useful and efficient for finding Lowest Common Ancestor(LCA) between Gene Ontology (GO) terms.
+.SH SEE ALSO
+.TP
+<stdio.h>, <stdlib.h>, <string.h>
+.TP
+There are also some references below that help to further understand this pocket.
+.TP
+https://www.bilibili.com/video/av75592052
+.TP
+https://blog.csdn.net/acdreamers/article/details/16902023
+.SH COPYRIGHT
+.TP
+Copyright (C) 2021 gyq, jg, xjs. 
+.TP
+This is a free software.
+.TP
+The original codes can be obtained online at https://github.com/GYQ-form/bi290-project
+.SH AUTHORS
+.TP
+gyq, jg, xjs.
