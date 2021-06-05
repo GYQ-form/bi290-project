@@ -5,7 +5,7 @@ we use the slim GO file *goslim_generic.obo* as a demonstration, you can downloa
 
 we should first preprocess the data using the instruction:
 
-`cat goslim_generic.obo | grep -Po "(?<!_)id: GO:[0-9]{7}|is_a: GO:[0-9]{7}" | awk -f std.awk >slim_extract`
+`cat <file.obo> | grep -Po "(?<!_)id: GO:[0-9]{7}|is_a: GO:[0-9]{7}" | awk -f std.awk >slim_extract`
 
 you can change the processed file name, and you can change the file name in the source file main.c, make sure the macro definition N is suitable for the data size
 
@@ -24,6 +24,8 @@ then you can call `make` to build the lib file libgolca.so (make sure now you ar
 using `make move` to move the .o file to shared/ , lib file to lib/ and binary file to bin/ 
 
 before executing , make sure the dynamic lib path is added by using `export LD_LIBRARY_PATH=./lib${LD_LIBRARY_PATH}`
+
+additionally,you can use `python image.py slim_extract` to visualize the GO plot
 
 see more details in manual.
 

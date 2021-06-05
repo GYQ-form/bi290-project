@@ -5,7 +5,7 @@
 
 int n;
 char *arr[N];
-int fa[N][7];
+int fa[N][M];
 int dep[N];
 int head[N];
 int nx[N];
