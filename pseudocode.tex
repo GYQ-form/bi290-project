@@ -1,0 +1,75 @@
+\documentclass[8pt,twocolumn]{ctexart}
+%\usepackage{amssymb}
+%\usepackage{bm}
+%\usepackage{textcomp} %命令\textacutedbl的包,二阶导符号
+ 
+% Page length commands go here in the preamble
+%\setlength{\oddsidemargin}{-0.25in} % Left margin of 1 in + 0 in = 1 in
+\setlength{\textwidth}{12in}   % 指定显示纸张宽度Right margin of 8.5 in - 1 in - 6.5 in = 1 in
+%\setlength{\topmargin}{-.75in}  % Top margin of 2 in -0.75 in = 1 in
+%\setlength{\textheight}{9.2in}  % Lower margin of 11 in - 9 in - 1 in = 1 in
+%\setlength{\parindent}{0in}
+ 
+ 
+% 前期准备——start
+\makeatletter
+\newif\if@restonecol
+\makeatother
+\let\algorithm\relax
+\let\endalgorithm\relax
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}%[ruled,vlined]{
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm 
+% 前期准备——end
+ 
+\begin{document}
+ 
+% 主体algorithm部分——start
+    \begin{algorithm}
+        
+        \caption{Find LCA of given two terms in the GO plot}
+        
+        \LinesNumbered
+        
+        \KwIn{two GO terms ID}
+        
+        \KwOut{the GO id of their LCA}
+        
+        save the given GO plot using linked-forward star \;
+        
+        \textbf{DFS begin}{
+        
+        \If{ $depth[i]_{new}$ $\ge$ $depth[i]_{old}$}
+        {
+             $depth[i] \gets depth[i]_{new}$\;
+        }
+        }
+        
+        \textbf{final} \;
+        
+        \textbf{DFS begin}{
+        
+        \If{ $depth[father[i]]_{new}$ $\ge$ $depth[father[i]]_{old}$}
+        {
+             $father[i] \gets father[i]_{new}$\;
+        }
+        }
+        
+        \textbf{final} \;
+        
+        \textbf{DFS begin}
+        
+            $fa[u][i]=fa[fa[u][i-1]][i-1]$ \;
+        
+        \textbf{final} \;
+        
+        \textbf{Multiplication algorithm} \;
+        
+        \textbf{return} $LCA$ ;
+        
+    \end{algorithm}
+% 主体algorithm部分——end
+ 
+\end{document}
