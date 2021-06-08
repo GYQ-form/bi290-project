@@ -10,8 +10,8 @@ void randtree(FILE *fp,int d)
     int i,u;
 
     int n=rand()%4+1;
+    u=v;
     for(i=1;i<=n;i++){
-        u=v;
         v++;
         fprintf(fp,"%d\n",v);
         fprintf(fp,"%d\n",u);
