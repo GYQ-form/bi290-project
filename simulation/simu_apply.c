@@ -36,6 +36,7 @@ void add()
         in[v]++;//处理入度
 
         }
+    fclose(fp);
     }
 
 void init(int n){//初始化
@@ -77,6 +78,9 @@ int LCA(int u,int v){
 }
 int main()
 {
+        clock_t start,finish;
+        start=clock();
+        
         init(N);
         add();
 
@@ -93,6 +97,12 @@ int main()
             }
 
         printf("the LCA between %d and %d is %d\n",L,R,LCA(L,R));
+        
+        finish=clock();
+        double duration;
+        duration = (double)(finish - start) / CLOCKS_PER_SEC;
+    
+        printf("the excution time is:%f\n",duration);
         
         return 0;
 }
