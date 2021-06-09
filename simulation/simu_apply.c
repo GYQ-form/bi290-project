@@ -15,7 +15,7 @@ int L,R;
 void add()
 {
     FILE *fp;
-    if((fp=fopen("random_tree.txt","r"))==NULL){
+    if((fp=fopen("random_tree3.txt","r"))==NULL){
     printf("打开文件错误！\n");
     exit(1);
     }
@@ -80,7 +80,7 @@ int main()
 {
         clock_t start,finish;
         start=clock();
-        
+
         init(N);
         add();
 
@@ -88,8 +88,8 @@ int main()
 
         srand(time(NULL));
 
-        L=rand*10()%442920+1;
-        R=rand*10()%442920+1;
+        L=rand()*10%442920+1;
+        R=rand()*10%442920+1;
         for(int i=1;i<=tot;i++)
             if(!in[i]){
                 dfs(i,0);//必须从入度为0的点开始dfs
@@ -97,12 +97,12 @@ int main()
             }
 
         printf("the LCA between %d and %d is %d\n",L,R,LCA(L,R));
-        
+
         finish=clock();
         double duration;
         duration = (double)(finish - start) / CLOCKS_PER_SEC;
-    
-        printf("the excution time is:%f\n",duration);
-        
+
+        printf("the excution time is:%f s\n",duration);
+
         return 0;
 }
